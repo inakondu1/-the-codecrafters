@@ -35,6 +35,10 @@ func calc() {
 		text := scanner.Text()
 		text = strings.TrimSpace(text)
 
+		if text == "exit" {
+			main()
+		}
+
 		if text == "help" {
 			fmt.Println("calc add <a> <b>      → addition")
 			fmt.Println("calc sub <a> <b>      → subtraction")
@@ -77,7 +81,7 @@ func calc() {
 		}
 
 		if len(part) < 3 {
-			fmt.Println("not enough argument")
+			fmt.Println("Error: Not enough argument, e.g add 87 77, sub 8 6.")
 			continue
 		}
 
@@ -182,6 +186,11 @@ func main() {
 		if text == "str" {
 			mainstring()
 			continue
+
+		}
+		if text == "exit" {
+			fmt.Println("Goodbye..............!!")
+			break
 		}
 	}
 }
@@ -190,6 +199,8 @@ func baseConverter() {
 	scanner := bufio.NewScanner(os.Stdin)
 
 	for {
+		fmt.Println("Welcome To Base Converter!")
+		fmt.Println("Enter help to continue.")
 		scanner.Scan()
 		input := scanner.Text()
 		input = strings.TrimSpace(input)
@@ -198,11 +209,11 @@ func baseConverter() {
 			fmt.Println(" base dec <number>   → convert decimal to binary AND hex")
 			fmt.Println(" base hex <number>   → convert hex to decimal")
 			fmt.Println(" base bin <number>   → convert binary to decimal")
+			fmt.Println("exit")
 			continue
 		}
 		if input == "exit" {
-			fmt.Println("goodbye")
-			break
+			main()
 		}
 		if input == "" {
 			fmt.Println("error")
